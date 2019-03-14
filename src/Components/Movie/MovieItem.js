@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Item, Modal, Button } from 'semantic-ui-react'
+import { Modal, Button, Image } from 'semantic-ui-react'
 import PropTypes from 'prop-types';
 
 import MovieDetail from '../Detail/MovieDetail.js';
-import { nextButton as NextButtonCss} from '../Custome.module.scss';
+import { nextButton as NextButtonCss, moviePoster as MoviePosterCss} from '../Custome.module.scss';
 
 
 class MovieItem extends Component {
@@ -41,14 +41,12 @@ class MovieItem extends Component {
         if(movie.poster_path === null){
             posterUrl = require("../movie_poster_placeholder.png");
         } else {
-            posterUrl = "http://image.tmdb.org/t/p/w154/" + movie.poster_path;
+            posterUrl = "https://image.tmdb.org/t/p/w154/" + movie.poster_path;
         }
 
         return (
             <div>
-            <Item onClick={this.show('inverted')}>
-                <Item.Image src={posterUrl} />
-            </Item>
+            <Image src={posterUrl} onClick={this.show('inverted')} className={MoviePosterCss}/>
 
             <Modal open={open} dimmer={dimmer} onClose={this.close}>
                 <Modal.Content>

@@ -16,14 +16,15 @@ class SearchMovie extends React.Component{
             stateCode: 0,
             /* Set default result to ascending */
             order: "ascending",
-            sort: "title"
+            sort: "title",
+            pageSize: 10
         }
     }
 
     componentDidMount() {
         /*Get movie in the first 5 pages */
         const url = 'https://api.themoviedb.org/3/movie/popular?api_key=209b45fafd497a0fdc9b0a2e2f4da457&page=';
-        for (let i = 1; i <=5; i+=1){
+        for (let i = 1; i <=this.state.pageSize; i+=1){
             axios.get(url+i.toString()).then(
                 res => {
                 /* Get Movie */

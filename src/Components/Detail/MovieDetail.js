@@ -12,9 +12,9 @@ class MovieDetail extends Component {
         /* Check for invalid movie poster url */
         let posterUrl;
         if(movie.poster_path === null){
-            posterUrl = require("../movie_poster_placeholder.png");
+            posterUrl = require("../movie_poster_detail_placeholder.png");
         } else {
-            posterUrl = "http://image.tmdb.org/t/p/w342/" + movie.poster_path;
+            posterUrl = "https://image.tmdb.org/t/p/w342/" + movie.poster_path;
         }
 
         return (

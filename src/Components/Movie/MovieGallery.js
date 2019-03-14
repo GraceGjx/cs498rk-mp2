@@ -12,7 +12,7 @@ class MovieGallery extends Component {
 
         return (
             <div>
-            <Grid columns={5}>
+            <Grid stackable columns={5}>
             { metaData.map((meta, index) => (
                 <Grid.Column key={index}>
                     <MovieItem movielist={metaData} curIdx = {index}/>

@@ -1,16 +1,66 @@
+//Colors
+$color-header: DimGrey;
+$color-searchRes: grey;
+
+// Breakpoints
+$bp-mobile: 420px;
+$bp-tablet: 960px;
+
+// Mixin for media queries
+@mixin for-size($size) {
+  @if $size == phone-only {
+    @media only screen and (max-width: $bp-mobile) { @content; }
+  } @else if $size == tablet-up {
+    @media only screen and (min-width: $bp-mobile + 1) { @content; }
+  } @else if $size == desktop-up {
+    @media only screen and (min-width: $bp-tablet + 1) { @content; }
+  }
+}
+
 .Header {
   text-align: center;
   margin: 2%;
-  color: DimGrey;
+  color: $color-header;
 
   h1 {
-      font-size: 35px;
+      @include for-size(phone-only) {font-size: 25px;}
+      @include for-size(tablet-up) {font-size: 30px;}
+      @include for-size(desktop-up) {font-size: 35px;}
       margin-bottom: 2%;
   }
 }
 
 .Gallery{
     margin: 2%;
+}
+
+.Scroll{
+    text-align: center;
+}
+
+.moviePoster {
+        position: relative;
+        -webkit-transition: all 200ms ease-in;
+        -webkit-transform: scale(1);
+        -ms-transition: all 200ms ease-in;
+        -ms-transform: scale(1);
+        -moz-transition: all 200ms ease-in;
+        -moz-transform: scale(1);
+        transition: all 200ms ease-in;
+        transform: scale(1);
+}
+
+.moviePoster:hover {
+      box-shadow: 0px 0px 80px #000000;
+      z-index: 2;
+      -webkit-transition: all 200ms ease-in;
+      -webkit-transform: scale(1.2);
+      -ms-transition: all 200ms ease-in;
+      -ms-transform: scale(1.2);
+      -moz-transition: all 200ms ease-in;
+      -moz-transform: scale(1.2);
+      transition: all 200ms ease-in;
+      transform: scale(1.2);
 }
 
 .Search {
@@ -20,7 +70,7 @@
     h2 {
         font-style: italic;
         font-size: 22px;
-        color: grey;
+        color: $color-searchRes;
     }
 }
 

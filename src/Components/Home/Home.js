@@ -5,7 +5,7 @@ import axios from 'axios';
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import MovieGallery from '../Movie/MovieGallery.js';
-import { Header as HeaderCss, Gallery as GalleryCss} from '../Custome.module.scss';
+import { Header as HeaderCss, Gallery as GalleryCss, Scroll as ScrollCss} from '../Custome.module.scss';
 
 class Home extends Component {
     state = {
@@ -81,7 +81,7 @@ class Home extends Component {
                 <div className={GalleryCss}>
                 <Grid centered columns={2}>
                     <Grid.Column width={3}>
-                        <Menu pointing secondary vertical>
+                        <Menu pointing secondary fluid vertical>
                         <Menu.Item
                             name="All"
                             value="all"
@@ -100,6 +100,7 @@ class Home extends Component {
                     </Grid.Column>
 
                     <Grid.Column width={13}>
+                        <div className={ScrollCss}>
                         <InfiniteScroll
                             dataLength={this.state.movies.length}
                             next={this.fetchMoreData}
@@ -107,6 +108,7 @@ class Home extends Component {
                             loader={<Icon loading color="teal" name="spinner" size="big"/>}>
                             <MovieGallery movie={this.state.movies}/>
                         </InfiniteScroll>
+                        </div>
                     </Grid.Column>
                 </Grid>
                 </div>

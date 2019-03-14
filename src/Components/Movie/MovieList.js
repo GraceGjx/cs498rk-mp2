@@ -24,6 +24,7 @@ export default class MovieList extends React.Component {
                     <Divider />
                 </div>
             ))}
+            <p>Display results in the first 10 pages...</p>
             </div>
 
 
